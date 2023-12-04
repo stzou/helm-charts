@@ -1,0 +1,4 @@
+# Empty values file for testing default parameters.
+datadog:
+  high_availability:
+    enabled: true

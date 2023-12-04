@@ -857,12 +857,9 @@ datadog:
     # datadog.containerLifecycle.enabled -- Enable container lifecycle events collection
     enabled: true
 
-  adp:
-    # datadog.adp.enabled -- Enable high-availability mode via Agent Data Plane (ADP)
+  high_availability:
+    # datadog.high_availability.enabled -- Enable high-availability mode via Agent Data Plane (ADP)
     enabled: false
-
-    # datadog.adp.port -- Override the agent-data-plane port
-    port: 9125
 
 ## This is the Datadog Cluster Agent implementation that handles cluster-wide
 ## metrics more cleanly, separates concerns for better rbac, and implements

@@ -124,7 +124,7 @@ spec:
         {{- if eq  (include "should-enable-security-agent" .) "true" }}
           {{- include "container-security-agent" . | nindent 6 }}
         {{- end }}
-        {{- if .Values.datadog.adp.enabled }}
+        {{- if .Values.datadog.high_availability.enabled }}
           {{- include "container-agent-data-plane" . | nindent 6 }}
         {{- end }}
       initContainers:

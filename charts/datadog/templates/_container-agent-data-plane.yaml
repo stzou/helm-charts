@@ -7,8 +7,8 @@
   resources:
     {{- toYaml .Values.agents.containers.agentDataPlane.resources | indent 4 }}
   ports:
-  - containerPort: {{ .Values.datadog.adp.port }}
-    hostPort: {{ .Values.datadog.adp.port }}
+  - containerPort: 9125
+    hostPort: 9125
     name: agent
     protocol: TCP
   {{- if or .Values.datadog.envFrom .Values.agents.containers.agentDataPlane.envFrom }}
@@ -25,8 +25,6 @@
     {{- include "containers-cluster-agent-env" . | nindent 4 }}
     - name: ADP_LOG
       value: {{ .Values.agents.containers.agentDataPlane.logLevel | default .Values.datadog.logLevel | quote }}
-    - name: DD_ADP_LISTEN_PORT
-      value: {{ .Values.datadog.adp.port | default 9125 | quote }}
     {{- include "additional-env-entries" .Values.agents.containers.agentDataPlane.env | indent 4 }}
     {{- include "additional-env-dict-entries" .Values.agents.containers.agentDataPlane.envDict | indent 4 }}
   volumeMounts:
@@ -43,5 +41,5 @@
     {{- end }}
   livenessProbe:
 {{- $live := .Values.agents.containers.agentDataPlane.livenessProbe }}
-{{ include "probe.tcp" (dict "port" .Values.datadog.adp.port "settings" $live ) | indent 4 }}
+{{ include "probe.tcp" (dict "port" 9125 "settings" $live ) | indent 4 }}
 {{- end -}}
