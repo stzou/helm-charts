@@ -120,8 +120,8 @@ Return secret name to be used based on provided values.
 {{/*
 Return secret name to be used based on provided values.
 */}}
-{{- define "datadog.highAvailability.failoverApiSecretName" -}}
-{{- $fullName := include "datadog.fullname" . -}}
+{{- define "datadog.highAvailability.failoverApiKeySecretName" -}}
+{{- $fullName := printf "%s-ha-apikey" (include "datadog.fullname" .) -}}
 {{- default $fullName .Values.datadog.highAvailability.failoverApiKeyExistingSecret | quote -}}
 {{- end -}}
 

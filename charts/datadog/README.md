@@ -712,10 +712,10 @@ helm install <RELEASE_NAME> \
 | datadog.helmCheck.enabled | bool | `false` | Set this to true to enable the Helm check (Requires Agent 7.35.0+ and Cluster Agent 1.19.0+) This requires clusterAgent.enabled to be set to true |
 | datadog.helmCheck.valuesAsTags | object | `{}` | Collects Helm values from a release and uses them as tags (Requires Agent and Cluster Agent 7.40.0+). This requires datadog.HelmCheck.enabled to be set to true |
 | datadog.highAvailability.enabled | bool | `false` | Enable high-availability mode via Agent Data Plane (ADP) |
-| datadog.highAvailability.useFailover | bool | `false` | Whether or not to send data to the failover region |
-| datadog.highAvailability.failoverSite | string | `""` | The Datadog site to use as the failover region |
 | datadog.highAvailability.failoverApiKey | string | `""` | Datadog API key for the failover region |
 | datadog.highAvailability.failoverApiKeyExistingSecret | bool | `false` | Use existing Secret which stores API key instead of creating a new one. The value should be set with the `api-key` key inside the secret. |
+| datadog.highAvailability.failoverSite | string | `""` | The Datadog site to use as the failover region |
+| datadog.highAvailability.useFailover | bool | `false` | Whether or not to send data to the failover region |
 | datadog.hostVolumeMountPropagation | string | `"None"` | Allow to specify the `mountPropagation` value on all volumeMounts using HostPath |
 | datadog.ignoreAutoConfig | list | `[]` | List of integration to ignore auto_conf.yaml. |
 | datadog.kubeStateMetricsCore.annotationsAsTags | object | `{}` | Extra annotations to collect from resources and to turn into datadog tag. |
