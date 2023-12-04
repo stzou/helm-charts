@@ -120,6 +120,14 @@ Return secret name to be used based on provided values.
 {{/*
 Return secret name to be used based on provided values.
 */}}
+{{- define "datadog.highAvailability.failoverApiSecretName" -}}
+{{- $fullName := include "datadog.fullname" . -}}
+{{- default $fullName .Values.datadog.highAvailability.failoverApiKeyExistingSecret | quote -}}
+{{- end -}}
+
+{{/*
+Return secret name to be used based on provided values.
+*/}}
 {{- define "datadog.appKeySecretName" -}}
 {{- $fullName := printf "%s-appkey" (include "datadog.fullname" .) -}}
 {{- default $fullName .Values.datadog.appKeyExistingSecret | quote -}}

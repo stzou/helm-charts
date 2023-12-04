@@ -857,9 +857,23 @@ datadog:
     # datadog.containerLifecycle.enabled -- Enable container lifecycle events collection
     enabled: true
 
-  high_availability:
-    # datadog.high_availability.enabled -- Enable high-availability mode via Agent Data Plane (ADP)
+  highAvailability:
+    # datadog.highAvailability.enabled -- Enable high-availability mode via Agent Data Plane (ADP)
     enabled: false
+
+    # datadog.highAvailability.useFailover -- Whether or not to send data to the failover region
+    useFailover: false
+
+    # datadog.highAvailability.failoverSite -- The Datadog site to use as the failover region
+    failoverSite: ""
+
+    # datadog.highAvailability.failoverApiKey -- Datadog API key for the failover region
+    failoverApiKey:  # <DATADOG_API_KEY>
+
+    # datadog.highAvailability.failoverApiKeyExistingSecret -- Use existing Secret which stores API key instead of creating a new one. The value should be set with the `api-key` key inside the secret.
+
+    ## If set, this parameter takes precedence over "datadog.highAvailability.failoverApiKey".
+    failoverApiKeyExistingSecret:  # <DATADOG_API_KEY_SECRET>
 
 ## This is the Datadog Cluster Agent implementation that handles cluster-wide
 ## metrics more cleanly, separates concerns for better rbac, and implements
