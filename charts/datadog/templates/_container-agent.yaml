@@ -175,17 +175,19 @@
     - name: DD_SBOM_HOST_ENABLED
       value: "true"
     {{- end }}
-    {{- if .Values.datadog.adp.enabled }}
-    - name: DD_ADP_ENABLED
+    {{- if .Values.datadog.high_availability.enabled }}
+    - name: DD_HA_ENABLED
+      value: "true"
+    - name: DD_HA_AUTOCONFIG_DISABLED
       value: "true"
     - name: DD_OBSERVABILITY_PIPELINES_WORKER_METRICS_ENABLED
       value: "true"
     - name: DD_OBSERVABILITY_PIPELINES_WORKER_METRICS_URL
-      value: {{ .Values.datadog.adp.port | default 9125 | printf "http://127.0.0.1:%d" . | quote }}
+      value: "http://127.0.0.1:9125"
     - name: DD_OBSERVABILITY_PIPELINES_WORKER_LOGS_ENABLED
       value: "true"
     - name: DD_OBSERVABILITY_PIPELINES_WORKER_LOGS_URL
-      value: {{ .Values.datadog.adp.port | default 9125 | printf "http://127.0.0.1:%d" . | quote }}
+      value: "http://127.0.0.1:9125"
     {{- end }}
     {{- end }}
     {{- include "additional-env-entries" .Values.agents.containers.agent.env | indent 4 }}
