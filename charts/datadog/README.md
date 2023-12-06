@@ -711,6 +711,7 @@ helm install <RELEASE_NAME> \
 | datadog.helmCheck.collectEvents | bool | `false` | Set this to true to enable event collection in the Helm Check (Requires Agent 7.36.0+ and Cluster Agent 1.20.0+) This requires datadog.HelmCheck.enabled to be set to true |
 | datadog.helmCheck.enabled | bool | `false` | Set this to true to enable the Helm check (Requires Agent 7.35.0+ and Cluster Agent 1.19.0+) This requires clusterAgent.enabled to be set to true |
 | datadog.helmCheck.valuesAsTags | object | `{}` | Collects Helm values from a release and uses them as tags (Requires Agent and Cluster Agent 7.40.0+). This requires datadog.HelmCheck.enabled to be set to true |
+| datadog.highAvailability.agentDataPlaneEnabled | bool | `false` | Enable the Agent Data Plane (ADP) for sending telemetry data to the primary/failover regions |
 | datadog.highAvailability.enabled | bool | `false` | Enable high-availability mode via Agent Data Plane (ADP) |
 | datadog.highAvailability.failoverApiKey | string | `nil` | Datadog API key for the failover region |
 | datadog.highAvailability.failoverApiKeyExistingSecret | string | `nil` | Use existing Secret which stores API key instead of creating a new one. The value should be set with the `api-key` key inside the secret. |

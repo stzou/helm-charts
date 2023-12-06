@@ -858,8 +858,11 @@ datadog:
     enabled: true
 
   highAvailability:
-    # datadog.highAvailability.enabled -- Enable high-availability mode via Agent Data Plane (ADP)
+    # datadog.highAvailability.enabled -- Enable high-availability mode
     enabled: false
+
+    # datadog.highAvailability.agentDataPlaneEnabled -- Enable the Agent Data Plane (ADP) for sending telemetry data to the primary/failover regions
+    agentDataPlaneEnabled: false
 
     # datadog.highAvailability.useFailover -- Whether or not to send data to the failover region
     useFailover: false
