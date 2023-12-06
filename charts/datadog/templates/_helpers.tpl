@@ -414,17 +414,6 @@ false
 {{- end -}}
 
 {{/*
-Return true if the agent-data-plane container should be created.
-*/}}
-{{- define "should-enable-agent-data-plane" -}}
-{{- if and .Values.datadog.highAvailability.enabled .Values.datadog.highAvailability.agentDataPlaneEnabled -}}
-true
-{{- else -}}
-false
-{{- end -}}
-{{- end -}}
-
-{{/*
 Return true if .Values.existingClusterAgent is fully configured
 */}}
 {{- define "existingClusterAgent-configured" -}}
