@@ -2,24 +2,24 @@
 - name: agent-data-plane
   image: "{{ include "image-path" (dict "root" .Values "image" .Values.agents.image) }}"
   imagePullPolicy: {{ .Values.agents.image.pullPolicy }}
-  command: ["agent-data-plane", "{{ template "datadog.confPath" . }}/adp/config.yaml.jinja"]
-  {{- include "generate-security-context" (dict "securityContext" .Values.agents.containers.agentDataPlane.securityContext "targetSystem" .Values.targetSystem "seccomp" "" "kubeversion" .Capabilities.KubeVersion.Version) | indent 2 }}
+  command: ["agent-data-plane", "run", "{{ template "datadog.confPath" . }}/adp/config.yaml.jinja"]
+{{ include "generate-security-context" (dict "securityContext" .Values.agents.containers.agentDataPlane.securityContext "targetSystem" .Values.targetSystem "seccomp" "" "kubeversion" .Capabilities.KubeVersion.Version) | indent 2 }}
   resources:
-    {{- toYaml .Values.agents.containers.agentDataPlane.resources | indent 4 }}
+{{ toYaml .Values.agents.containers.agentDataPlane.resources | indent 4 }}
   ports:
   - containerPort: 9125
     hostPort: 9125
     name: agent
     protocol: TCP
-  {{- if or .Values.datadog.envFrom .Values.agents.containers.agentDataPlane.envFrom }}
+{{- if or .Values.datadog.envFrom .Values.agents.containers.agentDataPlane.envFrom }}
   envFrom:
-    {{- if .Values.datadog.envFrom }}
-    {{- .Values.datadog.envFrom | toYaml | indent 4 }}
-    {{- end }}
-    {{- if .Values.agents.containers.agentDataPlane.envFrom }}
-    {{- .Values.agents.containers.agentDataPlane.envFrom | toYaml | indent 4 }}
-    {{- end }}
-  {{- end }}
+{{- if .Values.datadog.envFrom }}
+{{ .Values.datadog.envFrom | toYaml | indent 4 }}
+{{- end }}
+{{- if .Values.agents.containers.agentDataPlane.envFrom }}
+{{ .Values.agents.containers.agentDataPlane.envFrom | toYaml | indent 4 }}
+{{- end }}
+{{- end }}
   env:
     {{- include "containers-common-env" . | nindent 4 }}
     {{- include "containers-cluster-agent-env" . | nindent 4 }}
@@ -36,9 +36,9 @@
       mountPath: {{ template "datadog.confPath" . }}/auth
       readOnly: true
     {{- end }}
-    {{- if .Values.agents.volumeMounts }}
-    {{- toYaml .Values.agents.volumeMounts | indent 4 }}
-    {{- end }}
+{{- if .Values.agents.volumeMounts }}
+{{ toYaml .Values.agents.volumeMounts | indent 4 }}
+{{- end }}
   livenessProbe:
 {{- $live := .Values.agents.containers.agentDataPlane.livenessProbe }}
 {{ include "probe.tcp" (dict "port" 9125 "settings" $live ) | indent 4 }}

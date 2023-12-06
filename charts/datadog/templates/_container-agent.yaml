@@ -175,6 +175,7 @@
     - name: DD_SBOM_HOST_ENABLED
       value: "true"
     {{- end }}
+    {{- end }}
     {{- if .Values.datadog.highAvailability.enabled }}
     - name: DD_HA_ENABLED
       value: "true"
@@ -197,7 +198,6 @@
       value: "true"
     - name: DD_OBSERVABILITY_PIPELINES_WORKER_LOGS_URL
       value: "http://127.0.0.1:9125"
-    {{- end }}
     {{- end }}
     {{- include "additional-env-entries" .Values.agents.containers.agent.env | indent 4 }}
     {{- include "additional-env-dict-entries" .Values.agents.containers.agent.envDict | indent 4 }}
