@@ -1,5 +1,9 @@
 # Datadog changelog
 
+## 3.67.0
+
+* Add startup probe for `Agent`, `Cluster-Agent` and `Cluster-Check-Runner`.
+
 ## 3.66.0
 
 * Set default `Agent` and `Cluster-Agent` version to `7.54.0`.
