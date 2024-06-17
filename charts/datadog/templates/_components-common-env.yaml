@@ -41,6 +41,9 @@
 {{- if .Values.datadog.namespaceLabelsAsTags }}
 - name: DD_KUBERNETES_NAMESPACE_LABELS_AS_TAGS
   value: '{{ toJson .Values.datadog.namespaceLabelsAsTags }}'
+{{- if .Values.datadog.namespaceAnnotationsAsTags }}
+- name: DD_KUBERNETES_NAMESPACE_ANNOTATIONS_AS_TAGS
+  value: '{{ toJson .Values.datadog.namespaceAnnotationsAsTags }}'
 {{- end }}
 - name: KUBERNETES
   value: "yes"
